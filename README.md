@@ -79,6 +79,6 @@ You are free to use, modify, and distribute it as you wish.
 
 Developed by **Yusuf Eren Han**  
 If you use this project, a mention or star is appreciated!
-![Project Overview](projectfile.png)
+![Project Overview](projectfiles.png)
 ---
 
