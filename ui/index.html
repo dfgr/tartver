@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tartver</title>
+    <style>
+        :root{
+            --background-color: #222831;
+            --container-color: #393E46;
+            --mid-color: #948979;
+            --text-color:#DFD0B8;
+        }
+        html{
+            margin: 0;
+            height: 100%;
+            width: 100%;
+        }
+        body{
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            width: 100%;
+            background-color: var(--background-color);
+            font-family: 'Inter', sans-serif;
+        }
+        .logo-padding-start{
+            height: 100%;
+            width: 4%;
+        }
+        .logo{
+            display: flex;
+            height: 9%;
+            overflow: hidden;
+        }
+        .logo > img{
+            height: 100%;
+            object-fit: contain;
+        }
+        .ui-container{
+            height: 90%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            color: var(--text-color);
+        }
+        .ui-container > *{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .weight-gauge {
+            height: 30%;
+        }
+        
+        .weight-ratio{
+            height: 25%;
+        }
+        .weight-sellect {
+            height: 30%;
+        }
+        .inner{
+            height: 90%;
+            width: 90%;
+            border-radius: 20px;
+            background-color: var(--container-color);
+            display: flex;
+            justify-content: space-around;
+            align-items:center
+        }
+        .chamber{
+            height: 80%;
+            width: 45%;
+            border-radius: 5%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            justify-content: space-ar;
+        }
+        .progress-bar{
+            width: 60%;
+            height: 90%;
+            overflow: hidden;
+            display: flex;
+            
+        }
+        .chamber-text{
+            width: 30%;
+            height: 70%;
+
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .chamber-text > *{
+            color: var(--text-color);
+            margin: 0;
+        }
+        .chamber-text > h4{
+            font-size: 4.5vw;
+        }
+        .chamber-text > p{
+            font-size: 3.5vw;
+            margin: 0;
+        }
+        .line{
+            width: 0.5%;
+            height: 80%;
+            border-radius: 3vw;
+            background-color: hsl(37, 39%, 80%);
+        }
+        .progress-bar > img{
+            width: 80%;
+            object-fit: contain;
+        }
+        .weight-procsesbar{
+            border-radius: 0 0 40% 40%;
+            position: absolute;
+            width: 16.5%;
+            height: 10%;
+            bottom: 73%;
+            left: 9.8%;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;
+ background-blend-mode: multiply,multiply;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .weight-procsesbar1{
+            left: 56.7%;
+        }
+        
+        #ratioRange {
+      -webkit-appearance: none;
+      width: 80%;
+      height: 1.8vh;
+      border-radius: 8vw;
+      background: linear-gradient(to right, #8d9290  50%,  #5b8874 50%);
+      outline: none;
+      transition: background 0.3s ease;
+    }
+
+    #ratioRange::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 4.5vw;
+      width: 5.5vw;
+      border-radius: 50%;
+      background-color: #E4E4E1;
+ background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+ 	background-blend-mode: normal, multiply;
+      cursor: pointer;
+    }
+        .ratio-adjust{
+            width: 85%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 20%;
+        }
+        
+        .ratio{
+            flex-direction: column;
+            justify-content: space-around;
+        }
+        .ratio-text {
+            width: 100%;
+            height: 15%;
+            display: flex;
+            justify-content: center;
+            align-items:center;
+        }
+        .ratio-text > * {
+            margin: 0;
+            font-size: 4.2vw;
+        }
+        .responsive-padding{
+            width: 3%;
+        }
+        .ratio-control{
+            width: 85%;
+            height: 30%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .select-section{
+            width: 40%;
+            height: 90%;
+
+        }
+        .checkbox-section{
+            width: 40%;
+            height: 90%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .select-section{
+            width: 60%;
+            height: 90%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .little-padding{
+            width: 6%;
+        }
+        .ratio-control > * > h4 {
+            margin: 0;
+        }
+        #ratioContainSelect{
+            color: var(--text-color);
+        }
+        .adjust-container{
+            display: flex;
+            flex-direction:column;
+            justify-content: space-around;
+            align-items: center;
+            width: 45%;
+            height: 75%;
+
+        }
+        .container-text > h4 {
+            margin: 0;
+            text-align: center;
+        }
+
+        .container-text{
+            height: 16%;    
+        }
+        .range-section{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 20%;
+        }
+        .weight-range {
+            -webkit-appearance: none;
+            width: 90%;
+            height: 2vh;
+            border-radius: 8vw;
+            background: linear-gradient(to right, var(--mid-color)  50%, var(--text-color) 50%);
+            outline: none;
+            transition: background 0.3s ease;
+        }
+        .weight-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 4.5vw;
+            width: 5vw;
+            border-radius: 50%;
+            background-color: #E4E4E1;
+            background-image: radial-gradient(at top center, rgba(255,255,255,0.03) 0%, rgba(0,0,0,0.03) 100%), linear-gradient(to top, rgba(255,255,255,0.1) 0%, rgba(143,152,157,0.60) 100%);
+            background-blend-mode: normal, multiply;
+            cursor: pointer;
+        }
+        .textbox-section{
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+        }
+        .weight-text{
+            
+            color: var(--text-color);
+            width: 80%;
+            border-radius: 3vw;
+            background:none;
+            border: 2px solid rgb(153, 152, 152);
+            text-align: center;
+        }
+        .parrent{
+            justify-content: center;
+            align-items: center;
+            height: 100%;
+            width: 100%;
+            display: flex;
+        }
+        .button-section{
+            width: 30%;
+            height: 22%;
+        }
+        .button-section button{
+            font-size: 5vw;
+            width: 100%;
+            background-image: linear-gradient(to right, #868f96 0%, #596164 100%);
+            border: none;
+            color: var(--text-color);
+            border-radius: 2vw;
+            box-shadow:none;
+        }
+        .inner-weight-adjust{
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="logo">
+        <div class="logo-padding-start"></div>
+        <img src="data:image/png;base64,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">
+    </div>
+
+    <div class="ui-container">
+        <div class="weight-gauge">
+            <div class="inner">
+                <div class="chamber">
+                    <div class="progress-bar">
+                        
+                        <img src="data:image/png;base64,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">
+                        <div class="weight-procsesbar">
+                            <p>%100</p>
+                        </div>
+                    </div>
+                    <div class="chamber-text">
+                        <h4>Ürün:</h4>
+                        <p>Çekirdek</h4>
+                        <h4>Kütle:</h4>
+                        <p>1000g</h4>
+                    </div>
+                </div>
+                <div class="line">
+                </div>
+                <div class="chamber">
+                    <div class="progress-bar">
+                        <img src="data:image/png;base64,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">
+                            <div class="weight-procsesbar weight-procsesbar1">
+                                <p>%100</p>
+                            </div>
+                        </div>
+                    <div class="chamber-text">
+                        <h4>Ürün:</h4>
+                        <p>Leblebi</h4>
+                        <h4>Kütle:</h4>
+                        <p>1000g</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="weight-ratio">
+            <div class="inner ratio">
+                    <div class="ratio-text">
+                        <h4>Çekirdek:</h4>
+                        <div class="responsive-padding"></div>
+                        <p id="container1" >%50</p>
+                        <div class="responsive-padding"></div>
+                        <h4>Leblebi:</h4>
+                        <div class="responsive-padding"></div>
+                        <p id="container2">%50</p>
+                    </div>
+                    <div class="ratio-adjust">
+                        <input type="range" min="0" max="100" value="50" id="ratioRange">
+                    </div>
+                    <div class="ratio-control">
+                        <div class="checkbox-section">
+                            <p>Oran'ı koru</p>
+                            <input type="checkbox" id="vehicle1" name="checkbox">
+                        </div>
+                        <div class="little-padding"></div>
+                        <div class="select-section">
+                            <p>Referans:</p>
+                            <div class="little-padding"></div>
+                            <select id="ratioContainSelect">
+                                <option value="1">Çekirdek</option>
+                                <option value="2">Leblebi</option>
+                            </select>
+                        </div>
+                    </div> 
+            </div>
+        </div>
+        <div class="weight-sellect">
+            <div class="inner inner-weight-adjust">
+                <div class="parrent">
+                    <div class="adjust-container">
+                        <div class="container-text">
+                            <h4>Çekirdek</h4>
+                        </div>
+                        <div class="range-section">
+                            <input class="weight-range" type="range" min="0" max="100" value="50" id="Container1Range">
+                        </div>
+                        <div class="textbox-section">
+                            <input type="number" class="weight-text" id="Container1Text">
+                        </div>
+                    </div>
+                    <div class="adjust-container">
+                        <div class="container-text">
+                            <h4>Çekirdek</h4>
+                        </div>
+                        <div class="range-section">
+                            <input class="weight-range" type="range" min="0" max="100" value="50" id="container2range">
+                        </div>
+                        <div class="textbox-section">
+                            <input type="number" class="weight-text" id="container2text">
+                        </div>
+                        
+                    </div>
+                
+                </div>
+                <div class="button-section">
+                    <button>Boşalt</button>
+                </div>
+            </div>
+        </div>
+        <h4 style="text-align: center;">Devoloped By RÖH Elektronik &#x1f1f9;&#x1f1f7 </h4>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            //ratio element
+            const ratioRange = document.getElementById('ratioRange');
+            //container1
+            const container1range = document.getElementById('Container1Range');
+            const container1text = document.getElementById('Container1Text');
+            //For Ratio 
+            ratioRange.addEventListener('input', () => {
+                const container1 = document.getElementById("container1")
+                const container2 = document.getElementById("container2")
+                const value = ratioRange.value;
+                container1.innerText = "% "+ String(value);
+                container2.innerText = "%"+String(100 -value);  
+                ratioRange.style.background = `linear-gradient(to right, #8d9290 ${value}%, #5b8874 ${value}%`;
+            });
+
+            //For weight Gauge
+            //------Conteainer1
+            container1range.addEventListener('input', () => {
+                container1range.style.background = `linear-gradient(to right, var(--mid-color)  ${container1range.value}%, var(--text-color) ${container1range.value}%`;
+                container1text.value = container1range.value;
+            });
+            container1text.addEventListener('input', () => {
+                container1range.value = container1range.value;
+                container1range.style.background = `linear-gradient(to right, var(--mid-color)  ${container1range.value}%, var(--text-color) ${container1range.valuee}%`;
+            });
+            //-----Container2
+            container2range.addEventListener('input', () => {
+                container2range.style.background = `linear-gradient(to right, var(--mid-color)  ${container2range.value}%, var(--text-color) ${container2range.value}%`;
+                container2text.value = container2range.value;
+            });
+            container2text.addEventListener('input', () => {
+                container1range.value = container2range.value;
+                container2range.style.background = `linear-gradient(to right, var(--mid-color)  ${container2text.value}%, var(--text-color) ${container2text.valuee}%`;
+            });
+        })
+    </script>
+</body>
+
+</html>
