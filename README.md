@@ -1,5 +1,5 @@
 # TartVer – Weight-Based Automatic Mixing Scale System
-
+![logo](ui/tartver.png)
 **TartVer** is an open-source weight-based automatic mixing and dispensing system designed for custom scale projects. It utilizes load cells for precise weight measurement, servo motors for mechanical control, and a built-in web interface for configuration and control.
 
 ## 🚀 Features
@@ -78,6 +78,6 @@ You are free to use, modify, and distribute it as you wish.
 
 Developed by **Yusuf Eren Han**  
 If you use this project, a mention or star is appreciated!
-
+![Project Overview](projectfile.png)
 ---
 
